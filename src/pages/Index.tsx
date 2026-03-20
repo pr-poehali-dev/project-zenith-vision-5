@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const solarSystemObjects = [
-  { name: "Меркурий", distance: "57.9 млн км", diameter: "4 879 км", moons: 0, color: "from-gray-400 to-gray-600", emoji: "⚫" },
-  { name: "Венера", distance: "108.2 млн км", diameter: "12 104 км", moons: 0, color: "from-yellow-500 to-orange-500", emoji: "🟡" },
-  { name: "Земля", distance: "149.6 млн км", diameter: "12 756 км", moons: 1, color: "from-blue-500 to-green-500", emoji: "🔵" },
-  { name: "Марс", distance: "227.9 млн км", diameter: "6 792 км", moons: 2, color: "from-red-500 to-orange-600", emoji: "🔴" },
-  { name: "Юпитер", distance: "778.5 млн км", diameter: "142 984 км", moons: 95, color: "from-orange-400 to-yellow-600", emoji: "🟠" },
-  { name: "Сатурн", distance: "1.43 млрд км", diameter: "120 536 км", moons: 146, color: "from-yellow-300 to-amber-500", emoji: "🪐" },
-  { name: "Уран", distance: "2.87 млрд км", diameter: "51 118 км", moons: 28, color: "from-cyan-400 to-teal-500", emoji: "🔵" },
-  { name: "Нептун", distance: "4.5 млрд км", diameter: "49 528 км", moons: 16, color: "from-blue-600 to-indigo-700", emoji: "💙" },
+  { name: "Меркурий", distance: "57.9 млн км", diameter: "4 879 км", moons: 0, color: "from-gray-400 to-gray-600", emoji: "⚫", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/17191697-b003-4848-b7c1-1a8c289951c5.jpg" },
+  { name: "Венера", distance: "108.2 млн км", diameter: "12 104 км", moons: 0, color: "from-yellow-500 to-orange-500", emoji: "🟡", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/5028aa22-67ad-433a-a69a-82bf8a5e5db6.jpg" },
+  { name: "Земля", distance: "149.6 млн км", diameter: "12 756 км", moons: 1, color: "from-blue-500 to-green-500", emoji: "🔵", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/8718edfa-bfc2-426e-8914-0ee817efffdd.jpg" },
+  { name: "Марс", distance: "227.9 млн км", diameter: "6 792 км", moons: 2, color: "from-red-500 to-orange-600", emoji: "🔴", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/503bd7b5-49f2-4587-98e3-2a554763e781.jpg" },
+  { name: "Юпитер", distance: "778.5 млн км", diameter: "142 984 км", moons: 95, color: "from-orange-400 to-yellow-600", emoji: "🟠", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/30a78034-ed08-4f71-a50e-2e7ef1f127cf.jpg" },
+  { name: "Сатурн", distance: "1.43 млрд км", diameter: "120 536 км", moons: 146, color: "from-yellow-300 to-amber-500", emoji: "🪐", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/56400b4e-ad18-4f4c-b77e-7c77c5f51152.jpg" },
+  { name: "Уран", distance: "2.87 млрд км", diameter: "51 118 км", moons: 28, color: "from-cyan-400 to-teal-500", emoji: "🔵", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/795bac6f-7385-466c-b881-ea50b4d53416.jpg" },
+  { name: "Нептун", distance: "4.5 млрд км", diameter: "49 528 км", moons: 16, color: "from-blue-600 to-indigo-700", emoji: "💙", image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/a56615d7-1618-48e3-850f-f64981cd32b7.jpg" },
 ];
 
 const cosmicObjects = [
@@ -17,37 +17,43 @@ const cosmicObjects = [
     title: "Чёрные дыры",
     icon: "Circle",
     desc: "Области пространства с настолько сильной гравитацией, что даже свет не может покинуть их. Первая фотография чёрной дыры M87* была сделана в 2019 году.",
-    fact: "Масса M87* — 6.5 млрд солнечных масс"
+    fact: "Масса M87* — 6.5 млрд солнечных масс",
+    image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/b5920186-a8ad-443e-8809-604492944b48.jpg"
   },
   {
     title: "Нейтронные звёзды",
     icon: "Star",
     desc: "Сверхплотные остатки взорвавшихся звёзд. Одна чайная ложка вещества нейтронной звезды весила бы около миллиарда тонн на Земле.",
-    fact: "Диаметр всего ~20 км, но масса — 1.5 Солнца"
+    fact: "Диаметр всего ~20 км, но масса — 1.5 Солнца",
+    image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/435eb532-7a79-4b62-b3ea-03f7597f23c6.jpg"
   },
   {
     title: "Туманности",
     icon: "Cloud",
     desc: "Гигантские облака газа и пыли в космосе — колыбели новых звёзд. Туманность Ориона видна невооружённым глазом как туманное пятно.",
-    fact: "Туманность Орла простирается на 70 световых лет"
+    fact: "Туманность Орла простирается на 70 световых лет",
+    image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/69aadbab-d951-40a8-8d9b-d3ed32b13dd5.jpg"
   },
   {
     title: "Квазары",
     icon: "Zap",
     desc: "Самые яркие объекты во Вселенной — активные ядра далёких галактик. Квазар 3C 273 светит в 4 триллиона раз ярче Солнца.",
-    fact: "Обнаружены на расстоянии свыше 13 млрд световых лет"
+    fact: "Обнаружены на расстоянии свыше 13 млрд световых лет",
+    image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/51b0dc2b-a806-464a-995d-45b6ae9de0df.jpg"
   },
   {
     title: "Экзопланеты",
     icon: "Globe",
     desc: "Планеты за пределами нашей Солнечной системы. Телескоп Кеплер открыл тысячи таких планет, среди которых есть потенциально обитаемые.",
-    fact: "Открыто более 5 500 подтверждённых экзопланет"
+    fact: "Открыто более 5 500 подтверждённых экзопланет",
+    image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/5ca1d56e-a8df-4ab6-9372-b197b8907447.jpg"
   },
   {
     title: "Галактики",
     icon: "Sparkles",
     desc: "Гигантские системы из звёзд, газа, пыли и тёмной материи. Наш Млечный Путь содержит от 100 до 400 миллиардов звёзд.",
-    fact: "В наблюдаемой Вселенной ~2 триллиона галактик"
+    fact: "В наблюдаемой Вселенной ~2 триллиона галактик",
+    image: "https://cdn.poehali.dev/projects/59de7993-425b-42f1-8481-9be30b5d3860/files/3bf9e5d1-6693-402a-8c1f-23210e2eeaab.jpg"
   },
 ];
 
@@ -192,6 +198,7 @@ const interestingFacts = [
 const Index = () => {
   const [visibleSections, setVisibleSections] = useState<Record<string, boolean>>({});
   const [activePlanet, setActivePlanet] = useState(0);
+  const [modalImage, setModalImage] = useState<{ src: string; title: string } | null>(null);
 
   useEffect(() => {
     const observers: Record<string, IntersectionObserver> = {};
@@ -219,6 +226,7 @@ const Index = () => {
   }, []);
 
   return (
+    <>
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 w-full bg-background/80 backdrop-blur-2xl border-b border-accent/20 z-50">
@@ -372,10 +380,17 @@ const Index = () => {
           {/* Planet Detail */}
           <div className={`p-8 lg:p-12 rounded-3xl border border-accent/20 bg-gradient-to-br ${solarSystemObjects[activePlanet].color} bg-opacity-10 relative overflow-hidden transition-all duration-500 ${visibleSections["solar"] ? "opacity-100" : "opacity-0"}`}>
             <div className="absolute top-0 right-0 text-[200px] opacity-10 leading-none select-none">{solarSystemObjects[activePlanet].emoji}</div>
-            <div className="relative z-10 grid md:grid-cols-3 gap-8">
+            <div className="relative z-10 grid md:grid-cols-3 gap-8 items-center">
               <div>
                 <h3 className="text-4xl font-black text-white mb-2">{solarSystemObjects[activePlanet].name}</h3>
-                <p className="text-white/50 text-sm">Планета Солнечной системы</p>
+                <p className="text-white/50 text-sm mb-4">Планета Солнечной системы</p>
+                <button
+                  onClick={() => setModalImage({ src: solarSystemObjects[activePlanet].image, title: solarSystemObjects[activePlanet].name })}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-accent/20 hover:bg-accent/30 border border-accent/30 text-accent text-sm font-semibold transition-all"
+                >
+                  <Icon name="Image" size={15} />
+                  Смотреть фото
+                </button>
               </div>
               <div className="space-y-4">
                 <div>
@@ -414,15 +429,17 @@ const Index = () => {
               <div
                 key={i}
                 style={{ transitionDelay: `${i * 100}ms` }}
-                className={`group p-8 border border-accent/10 hover:border-accent/40 rounded-2xl bg-card/50 hover:bg-card/80 transition-all duration-700 ${visibleSections["cosmic"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                onClick={() => setModalImage({ src: obj.image, title: obj.title })}
+                className={`group p-8 border border-accent/10 hover:border-accent/40 rounded-2xl bg-card/50 hover:bg-card/80 transition-all duration-700 cursor-pointer ${visibleSections["cosmic"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               >
                 <div className="w-12 h-12 rounded-xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-6 transition-colors">
                   <Icon name={obj.icon} size={22} className="text-accent" fallback="Star" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{obj.title}</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-4">{obj.desc}</p>
-                <div className="p-3 rounded-xl bg-accent/5 border border-accent/10">
+                <div className="p-3 rounded-xl bg-accent/5 border border-accent/10 flex items-center justify-between">
                   <p className="text-xs text-accent font-semibold">📡 {obj.fact}</p>
+                  <Icon name="Image" size={14} className="text-accent/50 group-hover:text-accent transition-colors shrink-0 ml-2" />
                 </div>
               </div>
             ))}
@@ -555,6 +572,35 @@ const Index = () => {
         </div>
       </footer>
     </div>
+
+    {/* Image Modal */}
+    {modalImage && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        onClick={() => setModalImage(null)}
+      >
+        <div
+          className="relative max-w-3xl w-full rounded-3xl overflow-hidden shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={modalImage.src}
+            alt={modalImage.title}
+            className="w-full object-cover"
+          />
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+            <h3 className="text-2xl font-black text-white">{modalImage.title}</h3>
+          </div>
+          <button
+            onClick={() => setModalImage(null)}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 flex items-center justify-center transition-colors"
+          >
+            <Icon name="X" size={18} className="text-white" />
+          </button>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 
